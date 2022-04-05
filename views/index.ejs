@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gästebuch</title>
+    <style>
+        div{
+            margin-bottom: 10px;
+        }
+        label{
+            display: inline-block;
+            width: 150px;
+            text-align: right
+        }
+        .newPost{
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        <div>
+            <label> Name: </label>
+            <input type="text" name="name" placeholder="Full Name" required>
+        </div>
+        <div>
+            <label> Username: </label>
+            <input type="text" name="username" placeholder="Username" required>
+        </div>
+        <div>
+            <label> Email: </label>
+            <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <div>
+            <label> Your Comment: </label>
+            <input type="text" name="comment" placeholder="Type some text.." required>
+        </div>
+        <div>
+            <label></label>
+            <input type="submit" value="Post your Comment">
+        </div>
+    </form>
+
+    <% if(users.lenght === 0) { %>
+        <h1>No actuell Post</h1>
+    <% } else { %>
+        <h1>Teufelsrochen Guestbook</h1>
+        <% users.forEach((user) => { %>
+            <div class="newPost">
+                <h1><%- user.name %></h1> <h3>(<%- user.username %>)</h3> <a href="#"><%- user.email %></a> <p>schreibt:</p>
+            </div>
+            <div>
+                <p><%- user.comment %></p>
+            </div>
+            <hr>
+        <% }) %>
+    <% } %>
+</body>
+</html>
